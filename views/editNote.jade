@@ -1,0 +1,16 @@
+extends template.jade
+
+block content
+    h1 Edit note
+
+    form(method='POST', action='/notes/#{_id}?_method=PUT')
+        .input-group
+            label(for='title') Title
+            input#title(type='text', name='title', value='#{title}')
+            br
+        .input-group
+            label(for='note') Note
+            input#note(type='text' name='note', value='#{note}')
+            br
+        .input-group
+            input(type='submit', value='Save')

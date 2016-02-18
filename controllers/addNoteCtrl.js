@@ -1,32 +1,31 @@
 "use strict";
 
-const Note = require('../models/addNoteModel');
+const NoteModel = require('../models/addNoteModel');
+
+module.exports.index = (req, res) => {
+    NoteModel.index(req, res);
+};
 
 module.exports.newNote = (req, res) => {
     res.render('addNote');
 };
 
 module.exports.postNote = (req, res) => {
-    console.log(req.body);
-    Note.create(req.body, (err, note) => {
-        if (err) throw err;
-        console.log('note posted');
-        res.redirect(`/notes/${note._id}`);
-    });
+    NoteModel.postNote(req, res);
 };
 
 module.exports.showNote = (req, res) => {
-    Note.findById(req.params.id, (err, note) => {
-        if (err) throw err;
-        console.log(note._id);
-        res.render('showNote', {title: note.title, note: note.note, _id: note._id});
-    });
+    NoteModel.showNote(req, res);
 };
 
 module.exports.destroy = (req, res) => {
-    console.log(req.body);
-    Note.findByIdAndRemove(req.params.id, (err) => {
-        if (err) throw err;
-        res.send('Deleted!');
-    });
+    NoteModel.destroyNote(req, res);
+};
+
+module.exports.edit = (req, res) => {
+    NoteModel.edit(req, res);
+};
+
+module.exports.update = (req, res) => {
+    NoteModel.update(req, res);
 };

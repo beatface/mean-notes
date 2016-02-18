@@ -3,10 +3,14 @@ html
     head
         block title
             title Killer Notes
-
+            link(rel='stylesheet' href='/lib/bootstrap/dist/css/bootstrap.min.css')
     body
         block header 
-            h1 Amazing header
+            nav.navbar.navbar-inverse
+                .navbar-header
+                    .navbar-brand Fackin' Notes
+                    ul.nav.navbar-nav
+                        li: a(href='/notes') All notes
         block content
         
         block scripts

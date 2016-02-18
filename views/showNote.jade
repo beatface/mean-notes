@@ -4,3 +4,6 @@ block content
     p #{note}
     form(action='/notes/#{_id}?_method=DELETE', method="POST")
         button(type="submit") Delete resource
+    
+    button: a(href='/notes/#{_id}/edit') Edit note
+    button: a(href='/notes') View all
