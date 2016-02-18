@@ -18,7 +18,15 @@ module.exports.postNote = (req, res) => {
 module.exports.showNote = (req, res) => {
     Note.findById(req.params.id, (err, note) => {
         if (err) throw err;
+        console.log(note._id);
+        res.render('showNote', {title: note.title, note: note.note, _id: note._id});
+    });
+};
 
-        res.render('showNote', {title: note.title, note: note.note});
+module.exports.destroy = (req, res) => {
+    console.log(req.body);
+    Note.findByIdAndRemove(req.params.id, (err) => {
+        if (err) throw err;
+        res.send('Deleted!');
     });
 };

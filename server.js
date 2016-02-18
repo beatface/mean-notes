@@ -5,11 +5,13 @@ const mongoose = require('mongoose');
 const path = require('path');
 const sassMiddleware = require('node-sass-middleware');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 // my modules
 const routes = require('./routes/index');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(methodOverride('_method'))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({

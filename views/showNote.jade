@@ -2,3 +2,5 @@ extends template.jade
 block content
     h3 #{title}
     p #{note}
+    form(action='/notes/#{_id}?_method=DELETE', method="POST")
+        button(type="submit") Delete resource
