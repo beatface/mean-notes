@@ -2,21 +2,13 @@
 
 const express = require('express');
 const router = express.Router();
-// const bodyParser = require('body-parser');
 
-const Note = require('../models/addNoteModel');
+const ctrl = require('../controllers/addNoteCtrl');
 
-router.get('/notes/new', (req, res) => {
-    res.render('addNote');
-});
+router.get('/notes/new', ctrl.newNote);
 
-router.post('/notes', (req, res) => {
-    console.log(req.body);
-    Note.create(req.body, (err, note) => {
-        if (err) throw err;
-        console.log('note posted');
-        res.redirect(`/notes/${note._id}`);
-    });
-});
+router.post('/notes', ctrl.postNote);
+
+router.get('/notes/:id', ctrl.showNote);
 
 module.exports = router;

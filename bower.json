@@ -1,0 +1,22 @@
+{
+  "name": "mean-notes",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "“Emma <“emma.beaton@gmail.com”>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/beatface/mean-notes",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
