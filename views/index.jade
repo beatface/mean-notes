@@ -1,7 +1,8 @@
 extends template.jade
 block content
-    ul
-        each note in notes
-            li: a(href='/notes/#{note._id}') #{note.title}
-    
-    button: a(href='/notes/new') Add note
+    .row
+        ul
+            each note in notes
+                li: a(href='/notes/#{note._id}') #{note.title}
+        
+        button.btn: a(href='/notes/new') Add note
