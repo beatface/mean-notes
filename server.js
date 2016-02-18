@@ -12,12 +12,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 app.use(routes);
 
-app.use(bodyParser.urlencoded({
-	extended: false
-}));
 // compile sass
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),

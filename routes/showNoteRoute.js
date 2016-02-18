@@ -9,7 +9,7 @@ router.get('/notes/:id', (req, res) => {
     Note.findById(req.params.id, (err, note) => {
         if (err) throw err;
 
-        res.render('showNote', {note: note});
+        res.render('showNote', {title: note.title, note: note.note});
     });
 });
 
