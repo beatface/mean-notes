@@ -1,9 +1,9 @@
 "use strict";
 
 const express = require('express');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const path = require('path');
-// const sassMiddleware = require('node-sass-middleware');
+const sassMiddleware = require('node-sass-middleware');
 const bodyParser = require('body-parser');
 // my modules
 const routes = require('./routes/index');
@@ -18,9 +18,19 @@ app.use(routes);
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
-app.use(bodyParser.json());
+// compile sass
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: true,
+  sourceMap: true
+}));
 
-
-app.listen(PORT, () => {
-    console.log(`Listening on port: ${PORT}`);
+mongoose.connect('mongodb://localhost:27017/mean-notes');
+const database = mongoose.connection;
+database.on('open', (err) => {
+    if (err) throw err;
+    app.listen(PORT, () => {
+        console.log(`Listening on port: ${PORT}`);
+    });
 });

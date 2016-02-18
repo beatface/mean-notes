@@ -5,9 +5,11 @@ block content
     form(method='POST', action='/notes')
         .input-group
             label(for='title') Title
-            input#title(type='text' name='title')
+            input#title(type='text', name='title')
             br
+        .input-group
             label(for='note') Note
             input#note(type='text' name='note')
             br
-            input(type='submit' value='Save')
+        .input-group
+            input(type='submit', value='Save')
