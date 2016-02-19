@@ -1,4 +1,18 @@
 .row {
-  padding: 25px; }
+  width: 68%;
+  margin: 0 auto; }
+
+body {
+  background-color: #E4FDE1; }
+
+#main-nav {
+  background-color: #028090;
+  border-radius: 0; }
+
+a {
+  color: black; }
+
+.btn {
+  background-color: #F45B69; }
 
 /*# sourceMappingURL=styles.css.map */

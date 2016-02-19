@@ -3,7 +3,8 @@ block content
     .row
         h3 #{note.title}
         p #{note.note}
-        p #{note.category.name} -- #{note.category.description}
+        if note.category.name
+            p #{note.category.name} -- #{note.category.description}
         form(action='/notes/#{note._id}?_method=DELETE', method="POST")
             button.btn(type="submit") Delete note
         

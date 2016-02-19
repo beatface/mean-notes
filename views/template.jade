@@ -1,17 +1,18 @@
 doctype html
-html
+html(lang='en')
     head
         block title
-            title Killer Notes
+            title Wondernote
             link(rel='stylesheet' href='/lib/bootstrap/dist/css/bootstrap.min.css')
             link(rel='stylesheet' href='/css/styles.css')
     body
         block header 
-            nav.navbar.navbar-inverse
+            nav#main-nav.navbar
                 .navbar-header
-                    .navbar-brand Fackin' Notes
+                    .navbar-brand Wondernote
                     ul.nav.navbar-nav
                         li: a(href='/notes') All notes
+                        li: a(href='/categories') Categories
         block content
         
         block scripts

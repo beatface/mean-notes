@@ -1,10 +1,16 @@
 extends template.jade
 block content
-    p name #{category.name}
-    p descrip #{category.description}
+    .row
+        h2 #{category.name}
+        p #{category.description}
 
-    h2 notes in category
+        h3 Notes:
+        
+        table
+            thead
+                tr
+                    th Note
 
-    ul
-        for note in category.notes
-            li #{note.title}
+            tbody
+                for note in category.notes
+                    td: a(href='/notes/#{note._id}') #{note.title}

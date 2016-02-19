@@ -30,11 +30,16 @@ module.exports.newNote = (req, res) => {
 
 module.exports.postNote = (req, res) => {
     console.log(req.body);
-    Note.create(req.body, (err, note) => {
-        if (err) throw err;
-        console.log('note posted');
-        res.redirect(`/notes/${note._id}`);
-    });
+    if (req.body.title === '') {
+        console.log("you need to add a title");
+        res.send('You need to add a title. Try again.');
+    } else {
+        Note.create(req.body, (err, note) => {
+            if (err) throw err;
+            console.log('note posted');
+            res.redirect(`/notes/${note._id}`);
+        });
+    }
 };
 
 module.exports.showNote = (req, res) => {

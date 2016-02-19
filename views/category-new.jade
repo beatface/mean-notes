@@ -1,11 +1,12 @@
 extends template.jade
 block content
-    form(method='POST' action='/categories')
-        .input-group
-            label(for='name') Name
-            input#name(type='text' name='name')
-        .input-group
-            label(for='description') Description
-            input#description(type='text' name='description')
-        .input-group
-            input(type='submit' value='Save category')
+    .row
+        form(method='POST' action='/categories')
+            .input-group
+                label(for='name') Name
+                input#name(type='text' name='name')
+            .input-group
+                label(for='description') Description
+                input#description(type='text' name='description')
+            .input-group
+                input(type='submit' value='Save category')

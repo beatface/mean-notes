@@ -14,8 +14,7 @@ block content
                 input#note(type='text' name='note', value='#{note}')
                 br
                 select#cat(name='category')
-                    for cat in categories
-                        - var selected = cat.id === note.category._id
+                    each cat in categories
                         option(value=cat._id)= cat.name
             .input-group
                 input.btn(type='submit', value='Save')

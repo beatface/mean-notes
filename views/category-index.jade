@@ -1,5 +1,8 @@
 extends template.jade
 block content
-    ul
-        each category in categories
-            li: a(href='/categories/#{category._id}') #{category.name} -- #{category.description}
+    .row
+        ul
+            each category in categories
+                li: a(href='/categories/#{category._id}') #{category.name} -- #{category.description}
+        
+        button.btn: a(href='/categories/new') Add category
