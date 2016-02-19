@@ -1,0 +1,5 @@
+extends template.jade
+block content
+    ul
+        each category in categories
+            li #{category.name} -- #{category.description}
