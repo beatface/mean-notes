@@ -4,11 +4,7 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
     name: String,
-    description: String,
-    notes: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'notes'
-    }]
+    description: String
 });
 
 const Category = mongoose.model('categories', schema);
@@ -31,4 +27,8 @@ module.exports.create = (req, res) => {
 
 module.exports.new = (req, res) => {
     res.render('category-new');
+};
+
+module.exports.show = (req, res) => {
+    res.render('category-show', {category: req.category});
 };

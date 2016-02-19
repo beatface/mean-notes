@@ -11,3 +11,6 @@ module.exports.create = (req, res) => {
 module.exports.new = (req, res) => {
     CategoryModel.new(req, res);
 };
+module.exports.show = (req, res) => {
+    CategoryModel.show(req, res);
+};

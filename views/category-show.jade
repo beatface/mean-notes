@@ -1,0 +1,10 @@
+extends template.jade
+block content
+    p name #{category.name}
+    p descrip #{category.description}
+
+    h2 notes in category
+
+    ul
+        for note in category.notes
+            li #{note.title}

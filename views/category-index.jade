@@ -2,4 +2,4 @@ extends template.jade
 block content
     ul
         each category in categories
-            li #{category.name} -- #{category.description}
+            li: a(href='/categories/#{category._id}') #{category.name} -- #{category.description}
