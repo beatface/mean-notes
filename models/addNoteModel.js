@@ -4,55 +4,61 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
     title: String,
-    note: String
+    note: String,
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'categories'
+    }
 });
 
-const Note = mongoose.model('Notes', schema);
+const Note = mongoose.model('notes', schema);
+const Category = require('./categoryModel').model;
 
-module.exports = {
-    index (req, res) {
-        Note.find({}, (err, notes) => {
-            res.render('index', {notes: notes});
-        });
-    },
+module.exports.model = Note;
 
-    postNote (req, res) {
-        console.log(req.body);
-        Note.create(req.body, (err, note) => {
-            if (err) throw err;
-            console.log('note posted');
-            res.redirect(`/notes/${note._id}`);
-        });
-    },
+module.exports.index = (req, res) => {
+    Note.find({}, (err, notes) => {
+        res.render('index', {notes: notes});
+    });
+};
 
-    showNote (req, res) {
-        Note.findById(req.params.id, (err, note) => {
-            if (err) throw err;
-            console.log(note._id);
-            res.render('showNote', {title: note.title, note: note.note, _id: note._id});
-        });
-    },
+module.exports.newNote = (req, res) => {
+    Category.find({}, (err, categories) => {
+        res.render('addNote', {categories: categories});
+    });
+};
 
-    destroyNote (req, res) {
-        console.log(req.body);
-        Note.findByIdAndRemove(req.params.id, (err) => {
-            if (err) throw err;
-            res.redirect('/notes');
-        });
-    },
+module.exports.postNote = (req, res) => {
+    console.log(req.body);
+    Note.create(req.body, (err, note) => {
+        if (err) throw err;
+        console.log('note posted');
+        res.redirect(`/notes/${note._id}`);
+    });
+};
 
-    edit (req, res) {
-        Note.findById(req.params.id, (err, note) => {
-            if (err) throw err;
-            res.render('editNote', {title: note.title, note: note.note, _id: note._id});
-        });
-    },
+module.exports.showNote = (req, res) => {
+    res.render('showNote', {note: req.note});
+};
 
-    update (req, res) {
-        console.log(req.params);
-        Note.findByIdAndUpdate(req.params.id, {title: req.body.title, note: req.body.note}, (err) => {
-            if (err) throw err;
-            res.redirect(`/notes/${req.params.id}`);
-        });
-    }
+module.exports.destroyNote = (req, res) => {
+    console.log(req.body);
+    req.note.remove((err) => {
+        if (err) throw err;
+        res.redirect('/notes');
+    });
+};
+
+module.exports.edit = (req, res) => {
+    Category.find({}, (err, categories) => {
+        res.render('editNote', {title: req.note.title, note: req.note.note, _id: req.note._id, categories: categories});
+    });
+};
+
+module.exports.update = (req, res) => {
+    console.log(req.params);
+    Note.findByIdAndUpdate(req.params.id, {title: req.body.title, note: req.body.note}, (err) => {
+        if (err) throw err;
+        res.redirect(`/notes/${req.params.id}`);
+    });
 };

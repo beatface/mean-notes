@@ -1,10 +1,11 @@
 extends template.jade
 block content
     .row
-        h3 #{title}
-        p #{note}
-        form(action='/notes/#{_id}?_method=DELETE', method="POST")
+        h3 #{note.title}
+        p #{note.note}
+        p #{note.category.name} -- #{note.category.description}
+        form(action='/notes/#{note._id}?_method=DELETE', method="POST")
             button.btn(type="submit") Delete note
         
-        button.btn: a(href='/notes/#{_id}/edit') Edit note
+        button.btn: a(href='/notes/#{note._id}/edit') Edit note
         button.btn: a(href='/notes') View all

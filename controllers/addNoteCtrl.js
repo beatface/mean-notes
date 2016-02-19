@@ -7,7 +7,7 @@ module.exports.index = (req, res) => {
 };
 
 module.exports.newNote = (req, res) => {
-    res.render('addNote');
+    NoteModel.newNote(req, res);
 };
 
 module.exports.postNote = (req, res) => {

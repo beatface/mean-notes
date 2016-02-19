@@ -1,5 +1,6 @@
 {
     "esversion": 6,
-    "harmony": true,
-    "esnext": true
+    "strict": true,
+    "esnext": false,
+    "node": true
 }

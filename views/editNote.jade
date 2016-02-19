@@ -13,5 +13,9 @@ block content
                 label(for='note') Note
                 input#note(type='text' name='note', value='#{note}')
                 br
+                select#cat(name='category')
+                    for cat in categories
+                        - var selected = cat.id === note.category._id
+                        option(value=cat._id)= cat.name
             .input-group
                 input.btn(type='submit', value='Save')
