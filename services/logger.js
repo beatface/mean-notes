@@ -1,5 +1,5 @@
 "use strict";
-const Log = require('./models/logModel');
+const Log = require('../models/logModel');
 
 module.exports = (req, res, next) => {
     // log request to database
